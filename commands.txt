@@ -1,0 +1,4 @@
+Creating a connect button for the metamask
+
+npx create-react-app .
+npm install ethers
