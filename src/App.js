@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
+import Navbar from './Compnents/Navbar';
 
 function App() {
 
@@ -13,16 +14,16 @@ function App() {
     }
   }, []);
 
-    const connectWallet = async () => {
-      window.ethereum.request({
-        method: "eth_requestAccounts",
-      }).then((accounts) => {
-        setAccount(accounts[0]);
-      }).catch((error)=>{
-        alert(error);
-      })
-      
-    }
+      const connectWallet = async() => {
+        window.ethereum.request({ method:"eth_requestAccounts"})
+        .then( (accounts) => {
+          setAccount(accounts[0]);
+        }).catch( (e) => {
+          alert(e)
+        })
+        
+      }
+
     if(account === null){
       return(
         <div className="App">{
@@ -33,18 +34,23 @@ function App() {
         </div>
       )
     }
-    return(
-      <div className="App">
-        <p> Connected as : {account}</p>
-      </div>
-    )
- 
+    else {
+
+      return(
+        <div className="App">
+          <p> Connected as : {account}</p>
+
+          <Navbar></Navbar>
+        </div>
+      )
+    }
   
   return (
   <>
-  
+    <button>Get </button>
   </>    
   );
+  return {account}
 }
 
 export default App;
